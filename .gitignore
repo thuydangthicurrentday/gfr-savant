@@ -1,0 +1,66 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+
+# Virtual Environment
+venv/
+env/
+ENV/
+.venv
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+gofileroom_download.log
+
+# Excel files (keep template if needed, but ignore data files)
+*.xlsx
+!template*.xlsx
+~$*.xlsx
+
+# Download directories
+downloads/
+donwloads/
+0_csv_/
+0_zip_/
+
+# CSV files
+*.csv
+
+# ZIP files
+*.zip
+
+# Chrome user data
+temp_chrome_data/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Backup files
+*.bak
+*_backup.py
+backup/
+
+# Temporary files
+*.tmp
+*.temp
+
