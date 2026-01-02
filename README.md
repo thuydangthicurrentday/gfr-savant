@@ -78,8 +78,8 @@ CLIENT_LIST_SHEET_NAME=Client List GFR
 DOCUMENT_LIST_SHEET_NAME=Download Document Log
 NUMBER_ITEMS_PER_PAGE=50
 
-# Login Credentials
-USERNAME=your_username
+# Login Credentials (REQUIRED - update with your GOFILEROOM account credentials)
+USERNAME=your_email@example.com
 PASSWORD=your_password
 
 # Download Directory (REQUIRED - change to your desired download path)
@@ -104,11 +104,15 @@ MACHINE=Machine-Name
 
 **Important Notes:** 
 - **REQUIRED**: Replace all placeholder values with your actual credentials and configuration
+- **USERNAME and PASSWORD**: You **must** update `USERNAME` and `PASSWORD` with your GOFILEROOM account credentials:
+  - `USERNAME` should be your email address used to login to GOFILEROOM
+  - `PASSWORD` should be your GOFILEROOM account password
+  - Example: `USERNAME=yourname@company.com` and `PASSWORD=your_actual_password`
 - **DOWNLOAD_DIR**: You **must** change `DOWNLOAD_DIR` to your desired download directory path. This is where all downloaded files will be stored. You can use either:
   - Absolute path: `DOWNLOAD_DIR=C:\Users\YourName\Downloads\gofileroom`
   - Relative path: `DOWNLOAD_DIR=./downloads` (relative to project root)
 - Email configuration is optional. Set `ENABLE_EMAIL=False` to disable email notifications
-- For Gmail, you may need to use an [App Password](https://support.google.com/accounts/answer/185833) instead of your regular password
+- For Gmail email notifications, you may need to use an [App Password](https://support.google.com/accounts/answer/185833) instead of your regular password
 
 ### 2. Configure Chrome Download Location
 
@@ -157,10 +161,15 @@ Before running the main script, you need to start Chrome with remote debugging e
 & "C:\Program Files\Google\Chrome\Application\chrome.exe" --remote-debugging-port=9222 --user-data-dir="C:\temp_chrome_data"
 ```
 
-**Note:** 
-- Keep this Chrome window open while running the automation
+**Important Notes:** 
+- **This is your main Chrome browser instance** that will be used by the automation script
+- **First time setup**: When you run this command for the first time, Chrome will be initialized with a new profile stored in `C:\temp_chrome_data`. This profile will be reused for all subsequent automation runs
+- **Login to GOFILEROOM**: After Chrome opens, manually login to GOFILEROOM (https://www.gofileroom.com/login) using your credentials to verify that login works correctly. This login session will be saved and reused for future automation runs
+- **Setup Download Location**: In this Chrome instance, go to Settings → Downloads and set the download location to match your `DOWNLOAD_DIR` from the `.env` file (see Configuration section above)
+- **Keep Chrome open**: Keep this Chrome window open while running the automation script. Do not close it
+- **Reuse for future runs**: For subsequent automation runs, you can reuse this same Chrome instance - just run the command again and Chrome will open with your saved profile (including login session and settings)
 - If Chrome is installed in a different location, adjust the path accordingly
-- The `temp_chrome_data` directory will be created automatically
+- The `temp_chrome_data` directory will be created automatically on first run
 
 ### 3. Verify Excel File Setup
 
